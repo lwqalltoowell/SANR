@@ -1,0 +1,8 @@
+torch==2.7.1
+numpy==2.1.2
+gymnasium[mujoco]==1.1.1
+mujoco==3.3.7
+shimmy[dm-control]==2.0.0
+dm-control==1.0.34
+wandb==0.27.2
+PyYAML==6.0.2

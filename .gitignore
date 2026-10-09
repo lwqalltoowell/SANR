@@ -1,0 +1,40 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Training outputs
+model/
+models/
+checkpoints/
+results/
+outputs/
+runs/
+videos/
+wandb/
+logs/
+*.pt
+*.pth
+*.log
+experiment_progress.*.json
+
+# Local credentials and tools
+.env
+.env.*
+.netrc
+.wandb/
+.codex/
+.claude/
+.vscode/
+.idea/
+
+# Temporary and operating system files
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db

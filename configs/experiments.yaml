@@ -1,0 +1,99 @@
+# =============================================================================
+# 实验配置
+# =============================================================================
+
+default_task: continual_dmc_walker
+default_seeds: [2927,958]
+
+tasks:
+  halfcheetah:
+    script: experiments/halfcheetah_reset_permu.py
+
+  hopper:
+    script: experiments/hopper_reset_permu.py
+
+  walker:
+    script: experiments/walker_reset_permu.py
+
+  continual_dmc_dog:
+    script: experiments/continual_dmc_train.py
+    params:
+      env_family: dog
+
+  continual_dmc_walker:
+    script: experiments/continual_dmc_train.py
+    params:
+      env_family: walker
+
+  continual_dmc_quadruped:
+    script: experiments/continual_dmc_train.py
+    params:
+      env_family: quadruped
+
+
+
+
+
+methods:
+
+  # ── Baselines ──
+  Oracle:
+    group: Oracle
+    params:
+      reset_agent_on_switch: true
+
+  baseline:
+    group: baseline
+    params:
+      reset_agent_on_switch: false
+
+
+  Layernorm+L2:
+    group: Layernorm+L2
+    params:
+      use_layernorm: true
+      weight_decay: 0.00001
+
+  Redo:
+    group: Redo
+    params:
+      use_redo: true
+      redo_frequency: 5
+
+
+
+  L2init:
+    group: L2init
+    params:
+      regen_coef: 0.001
+
+  SoftNP:
+    group: SoftNP
+    params:
+      snp_beta: 0.00001
+      use_layernorm: true
+
+  SNA:
+    group: SNA
+    params:
+      sna_lambda: 0.001
+      use_layernorm: true
+
+
+  SANR:
+    group: SNA+Redo
+    params:
+      sna_lambda: 0.001
+      use_layernorm: true
+      use_redo: true
+      redo_tau: 0.001
+
+  CBP:
+    group: CBP
+    params:
+      use_cbp: true
+
+  Regrama:
+    group: ReGraMa
+    params:
+      use_regrama: true
